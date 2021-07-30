@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 //
 // 1) single player can roll dice,
 //        look at dice
@@ -22,7 +23,35 @@ public class Main {
         Cup myCup = new Cup();
         myCup.roll();
         System.out.println(myCup.displayHand());
-        player.makeBid();
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("amount");
+        int bidQty1 = scanner2.nextInt();
+        System.out.println("enter value");
+        int bidValue1 = scanner2.nextInt();
+        System.out.println(myCup.displayHand());
+        System.out.println(myCup.displayHand());
+
+        System.out.println("amount");
+        int bidQty2 = scanner2.nextInt();
+        System.out.println("enter value");
+        int bidValue2 = scanner2.nextInt();
+
+        if (bidQty2 > bidQty1) {
+            System.out.println("good bid");
+
+        } else if (bidQty2 == bidQty1 && bidValue2 > bidValue1) {
+            System.out.println("good bid");
+        } else {
+            System.out.println("bad bid");
+        }
+
+
+
+
+
+        //player.makeBid();
+
+
 
 
 

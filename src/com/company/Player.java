@@ -32,9 +32,7 @@ public class Player {
             for (String bids : playerBids) {
                 System.out.println(bids);
             }
-
         }
-
 
     }
 
