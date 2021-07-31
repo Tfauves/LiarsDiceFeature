@@ -23,6 +23,8 @@ public class Main {
         Cup myCup = new Cup();
         myCup.roll();
         System.out.println(myCup.displayHand());
+        player.makeBid();
+
 //        Scanner scanner2 = new Scanner(System.in);
 //        System.out.println("amount");
 //        int bidQty1 = scanner2.nextInt();
@@ -49,7 +51,7 @@ public class Main {
 
 
 
-        player.makeBid();
+
 
 
 

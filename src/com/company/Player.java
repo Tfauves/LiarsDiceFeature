@@ -18,12 +18,12 @@ public class Player {
     public Player() {
         System.out.println("Enter Player Name: ");
         this.playerName = scanner.nextLine();
+        System.out.println(this.playerName + "s hand is ");
     }
 
     public void makeBid() {
-        while (isActiveRound) {
             System.out.println(betRecord);
-            System.out.println("player make your bid :");
+            System.out.println("make your bid :");
             System.out.println("Enter qty of dice on table: ");
             int initialBidHowManyDice = scanner.nextInt();
             System.out.println("Enter face value: ");
@@ -32,6 +32,7 @@ public class Player {
             betRecord = "Player bid: " + initialBidHowManyDice + "x " + initialBidDiceFaceValue;
             System.out.println(betRecord);
             System.out.println("Next player make your bid: ");
+        while (isActiveRound) {
             System.out.println("Enter qty of dice on table: ");
             int secondBidHowManyDice = scanner.nextInt();
             System.out.println("Enter face value: ");
@@ -40,16 +41,16 @@ public class Player {
             //playerBids.add(betRecord2);
 
             if (secondBidHowManyDice > initialBidHowManyDice) {
-                System.out.println("Valid bid1");
-                return;
+                System.out.println("Valid bid");
+                isActiveRound = false;
                // playerBids.add(betRecord1);
             } else if (secondBidHowManyDice == initialBidHowManyDice
                     && secondBidDiceFaceValue > initialBidDiceFaceValue) {
-                System.out.println("Valid bid2");
-                return;
-            } else {
-                System.out.println("Invalid bid");
+                System.out.println("Valid bid");
                 isActiveRound = false;
+            } else {
+                System.out.println("Invalid bid, bid again");
+                //isActiveRound = false;
             }
 
 //            for (String bids : playerBids) {
