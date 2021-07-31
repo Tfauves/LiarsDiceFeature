@@ -21,9 +21,13 @@ public class Main {
     public static void main(String[] args) {
         Player player = new Player();
         Cup myCup = new Cup();
+        List<Integer> playerHand = new ArrayList<>();
         myCup.roll();
+        myCup.saveHand();
+
+
         System.out.println(myCup.displayHand());
-        player.makeBid();
+        //player.makeBid();
 
 //        Scanner scanner2 = new Scanner(System.in);
 //        System.out.println("amount");
@@ -32,6 +36,7 @@ public class Main {
 //        int bidValue1 = scanner2.nextInt();
 //        System.out.println(myCup.displayHand());
 //        System.out.println(myCup.displayHand());
+//
 //
 //        System.out.println("amount");
 //        int bidQty2 = scanner2.nextInt();

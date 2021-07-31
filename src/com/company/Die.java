@@ -16,5 +16,6 @@ public class Die {
         int minSideValue =1;
         faceUpValue = dieValue.nextInt(maxSideValue) + minSideValue;
 
+
     }
 }
