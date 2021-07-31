@@ -1,0 +1,20 @@
+Objectives: 1.Make a bid
+2.Make a follow up bid a.Have logic to validate against the bid
+3.*CallLiar logic POA:
+1.Create a new player a.New cup with dice
+2.Roll all dice of player
+3.Show the dice to the player
+4.Taking input from player (Scanner)
+a.Saving the user input representing the last bid inside of LiarsDice class
+5.Next turn a.Show dice to player b.(Iterate until bid is valid) take input from player for follow up bid
+i.Validating the followup bid input against the previous bid
+1.Valid if quantity > previous quantity
+a.Face value is irrelevant
+2.If quantity == previous quantity and face value is higher
+c.End turn
+6.End program callLair() logic
+1.Declare in LiarsDice class
+2.Invoked when a player calls another player a liar
+3.If statement a.Frequency of value of the bid is >= quantity in the previous bid
+i.Current player should lose a die
+4.Else a.Bidder loses
