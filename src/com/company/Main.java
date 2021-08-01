@@ -27,7 +27,26 @@ public class Main {
 
 
         System.out.println(myCup.displayHand());
-        //player.makeBid();
+
+
+        player.makeBid();
+
+        if (myCup.diceOnTable.containsKey(player.initialBidDiceFaceValue) && myCup.diceOnTable.containsValue(player.initialBidHowManyDice)) {
+            System.out.println("bid was true challenger loses");
+            player.isALie = false;
+            myCup.playerHand.remove(0);
+//            if (cup.playerHand.size() == 0) {
+//                System.out.println("Player is out of dice. You are out of the game");
+//            }
+        } else {
+            System.out.println("bid was a lie");
+            myCup.playerHand.remove(0);
+            if (myCup.playerHand.size() == 0) {
+                System.out.println("Player is out of dice. You are out of the game");
+            }
+        }
+//
+       // player.catchALie();
 
 //        Scanner scanner2 = new Scanner(System.in);
 //        System.out.println("amount");

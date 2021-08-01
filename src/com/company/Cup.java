@@ -10,6 +10,7 @@ public class Cup {
     public List<Integer> playerHand = new ArrayList<>();
     public Map<Integer, Integer> diceOnTable = new HashMap<>();
 
+
     public Cup() {
         while (dice.size() < 5) {
             dice.add(new Die());
@@ -45,4 +46,6 @@ public class Cup {
         }
         return hand.trim();
     }
+
+
 }
