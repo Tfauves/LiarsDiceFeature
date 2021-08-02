@@ -40,6 +40,7 @@ public class Main {
 //            }
         } else {
             System.out.println("bid was a lie");
+            System.out.println("Player loses a die.");
             myCup.playerHand.remove(0);
                 player.isALie = true;
             if (myCup.playerHand.size() == 0) {
