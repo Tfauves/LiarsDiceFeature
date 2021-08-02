@@ -22,9 +22,6 @@ public class Cup {
             die.roll();
             playerHand.add(die.faceUpValue);
         }
-//        for (Integer die : playerHand) {
-//            System.out.println(die);
-//        }
     }
 
     public void saveHand() {

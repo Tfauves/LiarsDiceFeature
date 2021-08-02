@@ -21,32 +21,35 @@ public class Main {
     public static void main(String[] args) {
         Player player = new Player();
         Cup myCup = new Cup();
-        List<Integer> playerHand = new ArrayList<>();
+
         myCup.roll();
+        System.out.println(myCup.playerHand);
         myCup.saveHand();
-
-
         System.out.println(myCup.displayHand());
-
-
         player.makeBid();
+
 
         if (myCup.diceOnTable.containsKey(player.initialBidDiceFaceValue) && myCup.diceOnTable.containsValue(player.initialBidHowManyDice)) {
             System.out.println("bid was true challenger loses");
             player.isALie = false;
-            myCup.playerHand.remove(0);
-//            if (cup.playerHand.size() == 0) {
+
+            //below will be used for challenger if they call lie and bidder was telling the truth.
+//            myCup.playerHand.remove(0);
+//            if (myCup.playerHand.size() == 0) {
 //                System.out.println("Player is out of dice. You are out of the game");
 //            }
         } else {
             System.out.println("bid was a lie");
             myCup.playerHand.remove(0);
+                player.isALie = true;
             if (myCup.playerHand.size() == 0) {
                 System.out.println("Player is out of dice. You are out of the game");
             }
         }
-//
-       // player.catchALie();
+
+        System.out.println(myCup.playerHand);
+        System.out.println(myCup.diceOnTable);
+
 
 //        Scanner scanner2 = new Scanner(System.in);
 //        System.out.println("amount");

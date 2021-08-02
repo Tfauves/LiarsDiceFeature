@@ -6,14 +6,12 @@ import java.util.Scanner;
 
 public class Player {
     public String playerName;
-    public Cup cup;
-    public boolean isActivePlayer;
     int initialBidHowManyDice;
     int initialBidDiceFaceValue;
     public Scanner scanner = new Scanner(System.in);
     public boolean isActiveRound = true;
     public String betRecordDisplay = "";
-    public String betRecord2;
+
     public boolean isALie = false;
 
     public Player() {
@@ -55,29 +53,9 @@ public class Player {
                 //isActiveRound = false;
             }
 
-//            for (String bids : playerBids) {
-//                System.out.println(bids);
-//            }
+
         }
 
     }
 
-//    public void catchALie() {
-//        if (cup.diceOnTable.containsKey(initialBidDiceFaceValue) && cup.diceOnTable.containsValue(initialBidHowManyDice)) {
-//            System.out.println("bid was true challenger loses");
-//            isALie = false;
-//            cup.playerHand.remove(0);
-////            if (cup.playerHand.size() == 0) {
-////                System.out.println("Player is out of dice. You are out of the game");
-////            }
-//        } else {
-//            System.out.println("bid was a lie");
-//            cup.playerHand.remove(0);
-//            if (cup.playerHand.size() == 0) {
-//                System.out.println("Player is out of dice. You are out of the game");
-//            }
-//        }
-//
-//
-//    }
 }
