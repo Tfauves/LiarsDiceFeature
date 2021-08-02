@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
+    public Cup cup = new Cup();
     public Scanner scanner = new Scanner(System.in);
     public String playerName;
     public String betRecordDisplay = "";
@@ -37,21 +38,37 @@ public class Player {
         initialBidDiceFaceValue = scanner.nextInt();
         betRecordDisplay = "Player bid: " + initialBidHowManyDice + "x " + initialBidDiceFaceValue;
         System.out.println(betRecordDisplay);
+        scanner.nextLine();
 
         nextPlayerGuess();
     }
 
     public void nextPlayerGuess() {
 
-        System.out.println("Next player make your bid: ");
-        while (isActiveRound) {
+        System.out.println("Next player type (bid) to bid or (lie) if you think the player bid is a lie.");
+        String playerGuess = scanner.nextLine();
+
+        if (playerGuess.equals("bid")) {
             System.out.println("Enter qty of dice on table: ");
             secondBidHowManyDice = scanner.nextInt();
             System.out.println("Enter face value: ");
             secondBidDiceFaceValue = scanner.nextInt();
             betRecordDisplay = "Player bid: " + secondBidHowManyDice + "x " + secondBidDiceFaceValue;
             validateBid();
+        } else if (playerGuess.equals("lie")) {
+            checkLie();
         }
+//        else {
+//            System.out.println("invald entry");
+//        }
+//        while (isActiveRound) {
+//            System.out.println("Enter qty of dice on table: ");
+//            secondBidHowManyDice = scanner.nextInt();
+//            System.out.println("Enter face value: ");
+//            secondBidDiceFaceValue = scanner.nextInt();
+//            betRecordDisplay = "Player bid: " + secondBidHowManyDice + "x " + secondBidDiceFaceValue;
+//            validateBid();
+//        }
     }
 
     public void validateBid() {
@@ -69,6 +86,37 @@ public class Player {
             //isActiveRound = false;
         }
     }
+
+    public void checkLie() {
+        if (cup.diceOnTable.containsKey(initialBidDiceFaceValue) && cup.diceOnTable.containsValue(initialBidHowManyDice)) {
+            System.out.println("bid was true challenger loses");
+            isALie = false;
+            return;
+
+            //below will be used for challenger if they call lie and bidder was telling the truth.
+//            myCup.playerHand.remove(0);
+//            if (myCup.playerHand.size() == 0) {
+//                System.out.println("Player is out of dice. You are out of the game");
+//            }
+        } else {
+//            System.out.println("bid was a lie");
+//            System.out.println("Player loses a die.");
+//            cup.playerHand.remove(0);
+            isALie = true;
+//            if (cup.playerHand.size() == 0) {
+//                System.out.println("Player is out of dice. You are out of the game");
+//            }
+        }
+        if (isALie = true) {
+            System.out.println("bid was a lie");
+            System.out.println("Player loses a die.");
+            cup.playerHand.remove(0);
+            if (cup.playerHand.size() == 0) {
+                System.out.println("Player is out of dice. You are out of the game");
+            }
+        }
+    }
+
 
 
 }
