@@ -14,8 +14,6 @@ public class Game {
     int secondBidDiceFaceValue;
     public boolean isActiveRound = true;
     public boolean isALie = false;
-    //public List<Integer> playerHand = new ArrayList<>();
-    //public Map<Integer, Integer> diceOnTable = new HashMap<>();
     private final int MAX_PLAYERS = 6;
     private final int MIN_PLAYERS = 1;
 
@@ -39,12 +37,19 @@ public class Game {
 
     public void play() {
         player.cup.roll();
-        player.cup.saveHand();
         System.out.println(player.cup.displayHand());
         makeBid();
         nextPlayerGuess();
         validateBid();
         checkLie();
+    }
+
+    public void round() {
+
+    }
+
+    public void turn() {
+
     }
 
     public void makeBid() {
@@ -115,6 +120,7 @@ public class Game {
             System.out.println("bid was a lie");
             System.out.println("Player loses a die.");
             player.cup.playerHand.remove(0);
+
             if (player.cup.playerHand.size() == 0 && player.cup.diceOnTable.isEmpty()) {
                 System.out.println("Player is out of dice. You are out of the game");
             }
