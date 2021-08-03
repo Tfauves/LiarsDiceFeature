@@ -39,9 +39,7 @@ public class Game {
         player.cup.roll();
         System.out.println(player.cup.displayHand());
         makeBid();
-        nextPlayerGuess();
-        validateBid();
-        checkLie();
+
     }
 
     public void round() {
