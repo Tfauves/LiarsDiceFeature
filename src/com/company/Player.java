@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Player {
     public Cup cup = new Cup();
+
     public Scanner scanner = new Scanner(System.in);
     public String playerName;
     public String betRecordDisplay = "";
@@ -58,17 +59,6 @@ public class Player {
         } else if (playerGuess.equals("lie")) {
             checkLie();
         }
-//        else {
-//            System.out.println("invald entry");
-//        }
-//        while (isActiveRound) {
-//            System.out.println("Enter qty of dice on table: ");
-//            secondBidHowManyDice = scanner.nextInt();
-//            System.out.println("Enter face value: ");
-//            secondBidDiceFaceValue = scanner.nextInt();
-//            betRecordDisplay = "Player bid: " + secondBidHowManyDice + "x " + secondBidDiceFaceValue;
-//            validateBid();
-//        }
     }
 
     public void validateBid() {
@@ -88,7 +78,7 @@ public class Player {
     }
 
     public void checkLie() {
-        if (cup.diceOnTable.containsKey(initialBidDiceFaceValue) && cup.diceOnTable.containsValue(initialBidHowManyDice)) {
+        if (cup.diceOnTable.containsKey(initialBidDiceFaceValue) && cup.diceOnTable.get(initialBidDiceFaceValue) >= initialBidHowManyDice) {
             System.out.println("bid was true challenger loses");
             isALie = false;
             return;
@@ -99,9 +89,6 @@ public class Player {
 //                System.out.println("Player is out of dice. You are out of the game");
 //            }
         } else {
-//            System.out.println("bid was a lie");
-//            System.out.println("Player loses a die.");
-//            cup.playerHand.remove(0);
             isALie = true;
 //            if (cup.playerHand.size() == 0) {
 //                System.out.println("Player is out of dice. You are out of the game");
@@ -111,12 +98,10 @@ public class Player {
             System.out.println("bid was a lie");
             System.out.println("Player loses a die.");
             cup.playerHand.remove(0);
-            if (cup.playerHand.size() == 0) {
+            if (cup.playerHand.size() == 0 && cup.diceOnTable.isEmpty()) {
                 System.out.println("Player is out of dice. You are out of the game");
             }
         }
     }
-
-
 
 }
