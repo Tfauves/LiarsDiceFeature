@@ -19,14 +19,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Player player = new Player();
+        //Player player = new Player();
 //        Cup myCup = new Cup();
+        Game liarsDice = new Game();
+        liarsDice.play();
 
-        player.cup.roll();
-        System.out.println(player.cup.playerHand);
-        player.cup.saveHand();
-        System.out.println(player.cup.displayHand());
-        player.makeBid();
+//        player.cup.roll();
+//        System.out.println(liarsDice.player.cup.playerHand);
+//        player.cup.saveHand();
+//        System.out.println(player.cup.displayHand());
+        //player.makeBid();
 
 
 //        if (myCup.diceOnTable.containsKey(player.initialBidDiceFaceValue) && myCup.diceOnTable.containsValue(player.initialBidHowManyDice)) {
@@ -48,8 +50,8 @@ public class Main {
 //            }
 //        }
 
-        System.out.println(player.cup.playerHand);
-        System.out.println(player.cup.diceOnTable);
+//        System.out.println(player.cup.playerHand);
+//        System.out.println(player.cup.diceOnTable);
 
 
 //        Scanner scanner2 = new Scanner(System.in);
