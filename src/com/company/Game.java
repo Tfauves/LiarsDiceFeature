@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Game {
     public Scanner scanner = new Scanner(System.in);
-
     public Player player;
     public List<Player> players = new ArrayList<>();
     public String betRecordDisplay = "";
@@ -12,7 +11,6 @@ public class Game {
     int initialBidDiceFaceValue;
     int secondBidHowManyDice;
     int secondBidDiceFaceValue;
-    public boolean isActiveRound = true;
     public boolean isALie = false;
     private final int MAX_PLAYERS = 6;
     private final int MIN_PLAYERS = 1;
@@ -30,24 +28,17 @@ public class Game {
             System.out.println("Enter Player Name: ");
             players.add(new Player((scanner.nextLine()).trim()));
         }
-
-        for (Player activePlayer : players) {
-            player = activePlayer;
-        }
-
-
     }
 
     public void play() {
-        player.cup.roll();
-        System.out.println(player.cup.playerHand);
-
-        System.out.println(player.cup.displayHand());
-//        makeBid();
-        round();
-
-        System.out.println(player.cup.playerHand);
-
+        for (Player activePlayer : players) {
+            player = activePlayer;
+            player.cup.roll();
+            System.out.println(player.cup.playerHand);
+            System.out.println(player.cup.displayHand());
+            System.out.println(player.cup.playerHand);
+        }
+            round();
     }
 
     public void round() {
@@ -59,6 +50,7 @@ public class Game {
     public void turn(Player player) {
         System.out.println(player.playerName + "'s turn");
         makeBid();
+        nextPlayerGuess();
     }
 
     public void makeBid() {
@@ -71,14 +63,11 @@ public class Game {
         betRecordDisplay = player.playerName + "'s bid: " + initialBidHowManyDice + "x " + initialBidDiceFaceValue;
         System.out.println(betRecordDisplay);
         scanner.nextLine();
-
-        nextPlayerGuess();
-
+        //nextPlayerGuess();
     }
 
     public void nextPlayerGuess() {
-
-        System.out.println("Next player type (bid) to bid or (lie) if you think the player bid is a lie.");
+        System.out.println("Next player type (bid) to bid or (lie) if you think " + player.playerName + "'s bid is a lie.");
         String playerGuess = scanner.nextLine();
 
         if (playerGuess.equals("bid")) {
@@ -88,24 +77,22 @@ public class Game {
             secondBidDiceFaceValue = scanner.nextInt();
             betRecordDisplay = player.playerName + " 's bid is: " + secondBidHowManyDice + "x " + secondBidDiceFaceValue;
             validateBid();
+
         } else if (playerGuess.equals("lie")) {
             checkLie();
         }
     }
 
     public void validateBid() {
-
         if (secondBidHowManyDice > initialBidHowManyDice) {
             System.out.println("Valid bid");
-            //isActiveRound = false;
 
         } else if (secondBidHowManyDice == initialBidHowManyDice
                 && secondBidDiceFaceValue > initialBidDiceFaceValue) {
             System.out.println("Valid bid");
-            //isActiveRound = false;
+
         } else {
             System.out.println("Invalid bid, bid again");
-            //isActiveRound = false;
         }
     }
 
@@ -115,18 +102,10 @@ public class Game {
             isALie = false;
             return;
 
-            //below will be used for challenger if they call lie and bidder was telling the truth.
-//            myCup.playerHand.remove(0);
-//            if (myCup.playerHand.size() == 0) {
-//                System.out.println("Player is out of dice. You are out of the game");
-//            }
         } else {
             isALie = true;
-//            if (cup.playerHand.size() == 0) {
-//                System.out.println("Player is out of dice. You are out of the game");
-//            }
         }
-        if (isALie = true) {
+        if (isALie) {
             System.out.println("bid was a lie");
             System.out.println(player.playerName + " loses a die.");
             player.cup.playerHand.remove(0);
@@ -136,9 +115,6 @@ public class Game {
             }
         }
     }
-
-
-
 
 
 }
