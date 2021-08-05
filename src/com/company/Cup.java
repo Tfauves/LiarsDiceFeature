@@ -44,5 +44,11 @@ public class Cup {
         return hand.trim();
     }
 
+//    public void showAllHands(List<Player> playerList) {
+//        for (Player activePlayers : playerList) {
+//            System.out.println(activePlayers.cup.playerHand);
+//        }
+//    }
+
 
 }

@@ -11,9 +11,11 @@ public class Game {
     int initialBidDiceFaceValue;
     int secondBidHowManyDice;
     int secondBidDiceFaceValue;
+    public boolean isActiveRound = false;
     public boolean isALie = false;
     private final int MAX_PLAYERS = 6;
     private final int MIN_PLAYERS = 1;
+    public int turnCount = 0;
 
 
     public Game() {
@@ -31,30 +33,41 @@ public class Game {
     }
 
     public void play() {
-        for (Player activePlayer : players) {
-            player = activePlayer;
-            player.cup.roll();
-            System.out.println(player.cup.playerHand);
-            System.out.println(player.cup.displayHand());
-            System.out.println(player.cup.playerHand);
-        }
+        isActiveRound = true;
+        while (isActiveRound) {
             round();
+        }
+
+//        for (int i = 0; i < players.size(); i++) {
+//            if (players.get(i).cup.playerHand.size() == 0) {
+//                System.out.println("Display losers");
+//                isActiveRound = false;
+//            }
+//        }
     }
 
     public void round() {
-        for (Player player : players) {
+        for (Player activePlayer : players) {
+            player = activePlayer;
             turn(player);
         }
     }
 
     public void turn(Player player) {
         System.out.println(player.playerName + "'s turn");
-        makeBid();
-        nextPlayerGuess();
+        if (turnCount <= 0){
+        player.cup.roll();
+        }
+        if (betRecordDisplay.equals("")) {
+            makeBid();
+        } else {
+            nextPlayerGuess();
+        turnCount += 1;
+        }
     }
 
     public void makeBid() {
-        System.out.println(betRecordDisplay);
+//        System.out.println(betRecordDisplay);
         System.out.println("make your bid :");
         System.out.println("Enter qty of dice on table: ");
         initialBidHowManyDice = scanner.nextInt();
@@ -63,13 +76,12 @@ public class Game {
         betRecordDisplay = player.playerName + "'s bid: " + initialBidHowManyDice + "x " + initialBidDiceFaceValue;
         System.out.println(betRecordDisplay);
         scanner.nextLine();
-        //nextPlayerGuess();
+
     }
 
     public void nextPlayerGuess() {
-        System.out.println("Next player type (bid) to bid or (lie) if you think " + player.playerName + "'s bid is a lie.");
+        System.out.println("Type (bid) to bid or (lie) if you think the bid is a lie.");
         String playerGuess = scanner.nextLine();
-
         if (playerGuess.equals("bid")) {
             System.out.println("Enter qty of dice on table: ");
             secondBidHowManyDice = scanner.nextInt();
@@ -77,6 +89,7 @@ public class Game {
             secondBidDiceFaceValue = scanner.nextInt();
             betRecordDisplay = player.playerName + " 's bid is: " + secondBidHowManyDice + "x " + secondBidDiceFaceValue;
             validateBid();
+
 
         } else if (playerGuess.equals("lie")) {
             checkLie();
@@ -87,9 +100,11 @@ public class Game {
         if (secondBidHowManyDice > initialBidHowManyDice) {
             System.out.println("Valid bid");
 
+
         } else if (secondBidHowManyDice == initialBidHowManyDice
                 && secondBidDiceFaceValue > initialBidDiceFaceValue) {
             System.out.println("Valid bid");
+
 
         } else {
             System.out.println("Invalid bid, bid again");
