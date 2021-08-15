@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Die {
     int numberOfSides;
-    int faceUpValue;
+    int faceValue;
 
     public Die(){
         numberOfSides = 6;
@@ -14,7 +14,7 @@ public class Die {
         Random dieValue = new Random();
         int maxSideValue = 6;
         int minSideValue =1;
-        faceUpValue = dieValue.nextInt(maxSideValue) + minSideValue;
+        faceValue = dieValue.nextInt(maxSideValue) + minSideValue;
     }
 
 }
